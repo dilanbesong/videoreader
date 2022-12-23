@@ -1,0 +1,39 @@
+body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    background-color: #ccc;
+}
+.videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+    width: 100%;
+}
+video {
+    width:90vw;
+    height: 60vh;
+}
+p{
+    width: 90%;
+    word-break: break-all;
+    word-wrap: break-word;
+    line-height: 2.5rem;
+    font-size: 1.2rem;
+    margin-top: 0.75rem;
+    text-align: center;
+}
+#copyButton {
+   cursor: pointer;
+   padding: 0.5rem;
+   color: bisque;
+   outline: none;
+   border: none;
+   background-color: rgb(40, 24, 24);
+}
