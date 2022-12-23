@@ -19,6 +19,11 @@ body {
 video {
     width:90vw;
     height: 60vh;
+    border-radius:3px;
+}
+input {
+    outline: none;
+    border: none;
 }
 p{
     width: 90%;

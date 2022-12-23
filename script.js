@@ -50,7 +50,7 @@ copyButton.addEventListener('click', async() => {
 
  function ReadOutText(text) {
      const synth = window.speechSynthesis
-     const utterThis = new SpeechSynthesisUtterance(text)
+     const utterThis = new SpeechSynthesisUtterance(text.replace(/\s/g, " "))
      synth.speak(utterThis)
  }
 
