@@ -8,10 +8,8 @@ function qs(selector, parent=document){
 }
 captureButton.addEventListener('click', () => {
     if( !showText.innerText) {
-        showText.textContent = 'please show some written text on the video screen to capture'
-        setTimeout( () => {
-             showText.textContent = ''
-        },2000)
+        alert('please show some written text on the video screen to capture')
+       
     }else{ 
         captureButton.textContent = 'capturing...'
         setTimeout( () => {
@@ -24,10 +22,8 @@ captureButton.addEventListener('click', () => {
 
 copyButton.addEventListener('click', async() => {
     if(!showText.innerText){
-        showText.textContent = 'please show some written text on the video screen to capture before copying'
-        setTimeout( () => {
-             showText.textContent = ''
-        },2000)
+        alert( 'please show some written text on the video screen to capture before copying' )
+        
     }else {
        await navigator.clipboard.writeText(showText.innerText)
         copyButton.innerText = 'copied'
