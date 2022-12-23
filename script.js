@@ -1,6 +1,18 @@
-const video = document.querySelector('video')
-const showText = document.querySelector('[data-text]')
-const copyButton = document.querySelector('#copyButton')
+const video = qs('video')
+const showText = qs('[data-text]')
+const copyButton = qs('#copyButton')
+const captureButton = qs('.capture')
+
+function qs(selector, parent=document){
+    return parent.querySelector(selector)
+}
+captureButton.addEventListener('click', () => {
+      captureButton.textContent = 'capturing...'
+    setTimeout( () => {
+      captureButton.textContent = 'capture text'
+    }, 5000)
+    CaptureAndDisplay(showText)
+})
 
 copyButton.addEventListener('click', async() => {
     if(!showText.innerText){
@@ -22,30 +34,35 @@ copyButton.addEventListener('click', async() => {
     video.srcObject = stream
 
     video.addEventListener('playing', async() => {
-        const worker = await Tesseract.createWorker()
+
+        document.addEventListener('keypress',async e => {
+         if(e.code !== 'Space') return
+            CaptureAndDisplay(showText)
+        })
+
+    })
+ }
+
+ async function CaptureAndDisplay(showText) {
+
+     const worker = await Tesseract.createWorker()
 
         await worker.load()
         await worker.loadLanguage('eng')
         await worker.initialize('eng')
 
-        const canvas = document.createElement('canvas')
+     const canvas = document.createElement('canvas')
         canvas.width = video.width
         canvas.height = video.height
 
-        document.addEventListener('keypress',async e => {
-         if(e.code !== 'Space') return
-
-            canvas.getContext('2d').drawImage(video, 0, 0, video.width, video.height) // draw video and put on canvas
-            const { data:{ text }} = await worker.recognize(canvas)
-             showText.innerText = text
-             if(showText.innerText){
-                showText.innerText += text
-                ReadOutText(text)
-             }
-             ReadOutText(text)
-        })
-
-    })
+    canvas.getContext('2d').drawImage(video, 0, 0, video.width, video.height) // draw video and put on canvas
+    const { data:{ text }} = await worker.recognize(canvas)
+        showText.innerText = text
+        if(showText.innerText){
+        showText.innerText += text
+        ReadOutText(text)
+        }
+        ReadOutText(text)
  }
 
  function ReadOutText(text) {

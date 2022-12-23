@@ -21,9 +21,20 @@ video {
     height: 60vh;
     border-radius:3px;
 }
-input {
+.capture, #copyButton{
     outline: none;
-    border: none;
+    border:none;
+    width: 35vw;
+    height:20px;
+    border-radius:3px;
+    color: #fff;
+    cursor: pointer;
+}
+.capture {
+   background-color: darkblue;
+}
+#copyButton {
+   background-color: rgb(23, 9, 9);
 }
 p{
     width: 90%;
@@ -33,12 +44,4 @@ p{
     font-size: 1.2rem;
     margin-top: 0.75rem;
     text-align: center;
-}
-#copyButton {
-   cursor: pointer;
-   padding: 0.5rem;
-   color: bisque;
-   outline: none;
-   border: none;
-   background-color: rgb(40, 24, 24);
 }
