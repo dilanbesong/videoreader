@@ -4,7 +4,10 @@ const copyButton = document.querySelector('#copyButton')
 
 copyButton.addEventListener('click', async() => {
     if(!showText.innerText){
-        return
+        showText.textContent = 'please show some written text on the video screen to capture'
+        setTimeout( () => {
+             showText.textContent = ''
+        },2000)
     }else {
        await navigator.clipboard.writeText(showText.innerText)
         copyButton.innerText = 'copied'
