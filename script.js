@@ -7,16 +7,24 @@ function qs(selector, parent=document){
     return parent.querySelector(selector)
 }
 captureButton.addEventListener('click', () => {
-      captureButton.textContent = 'capturing...'
-    setTimeout( () => {
-      captureButton.textContent = 'capture text'
-    }, 5000)
-    CaptureAndDisplay(showText)
+    if( !showText.innerText) {
+        showText.textContent = 'please show some written text on the video screen to capture'
+        setTimeout( () => {
+             showText.textContent = ''
+        },2000)
+    }else{ 
+        captureButton.textContent = 'capturing...'
+        setTimeout( () => {
+        captureButton.textContent = 'capture text'
+        }, 5000)
+        CaptureAndDisplay(showText) 
+    }
+    
 })
 
 copyButton.addEventListener('click', async() => {
     if(!showText.innerText){
-        showText.textContent = 'please show some written text on the video screen to capture'
+        showText.textContent = 'please show some written text on the video screen to capture before copying'
         setTimeout( () => {
              showText.textContent = ''
         },2000)
