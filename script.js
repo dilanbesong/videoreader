@@ -7,16 +7,12 @@ function qs(selector, parent=document){
     return parent.querySelector(selector)
 }
 captureButton.addEventListener('click', () => {
-    if( !showText.innerText) {
-        alert('please show some written text on the video screen to capture')
-       
-    }else{ 
+    
         captureButton.textContent = 'capturing...'
         setTimeout( () => {
         captureButton.textContent = 'capture text'
         }, 5000)
-        CaptureAndDisplay(showText) 
-    }
+        CaptureAndDisplay(showText)   
     
 })
 
